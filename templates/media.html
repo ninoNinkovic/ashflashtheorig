@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Media{% endblock %}
+{% block content %}
+<ul id="media_headings">
+    <li><a href="#" id="music_heading">Music</a></li>
+    <li><a href="#" id="video_heading">Videos</a></li>
+    <li><a href="#" id="picture_heading">Pictures</a></li>
+</ul>
+<p class="media_heading_help">(Click to toggle display)</p>
+
+<div id="music_block">
+{{ setlist|safe }}
+</div>
+
+<div id="video_block" style="display:none;">
+<p>YouTube Videos Coming Soon...</p>
+</div>
+
+<div id="picture_block" style="display:none;">
+    <div id="gallery">
+								<div class="image">
+												<img src="./static/images/gallery/AshFlashMic_thumb.jpg" width="110" height="73">
+												<div class="image_desc">AshFlash Mic</div>
+								</div>
+								
+								<div class="image">
+												<img src="./static/images/gallery/BlurredBG_thumb.jpg" width="110" height="73">
+												<div class="image_desc">Blurry Background</div>
+								</div>
+								
+								<div class="image">
+												<img src="./static/images/gallery/AshFlashWall_thumb.jpg" width="110" height="73">
+												<div class="image_desc">AshFlash Wall</div>
+								</div>
+    </div> <!-- end of gallery container -->
+
+</div> <!-- end of picture_block -->
+{% endblock%}
+
+{% block scripts %}
+<script type="text/javascript" src="./static/jquery.simplemodal-1.4.3.js"></script>
+<script type="text/javascript" src="./static/afto.js"></script>
+{% endblock %}

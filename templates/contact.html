@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact{% endblock %}
+{% block page_title %}Talk at me{% endblock %}
+
+{% block content %}
+
+<form method="post" action="" id="contact_form">
+    {{ form.csrf }}
+    {% with messages = get_flashed_messages() %}
+				<fieldset>
+								<legend>
+												{% if form.errors %}
+																Please fix all errors
+												{% elif messages %}
+												    Thank you
+												{% else %}
+																Enter your info below
+												{% endif %}
+								</legend>
+								{% if messages %}
+								    {% for m in messages %}
+								        <p>{{ m|safe }}</p>
+								    {% endfor %}
+								{% else %}
+												{% if form.errors %}
+												<div id="form_errors">
+																<p>Please fix the following:</p>
+																<ul>
+																{% for e in form.errors %}
+																				<li class="error">{{e}}</li>
+																{% endfor %}
+												</div>
+												{% endif %}
+												
+												<p class="form_p"><label for="name">Name:</label><br/>{{ form.name }}</p>
+												<p class="form_p"><label for="email">Email Address:</label><br/>{{ form.email }}</p>
+												<p class="form_p"><label for="subject">Subject:</label><br/>{{ form.subject }}</p>
+												<p class="form_p"><label for="message">Message:</label><br/>{{ form.message(rows=10, cols=35) }}</p>
+												<input type="submit" value="Send it" id="submit"/>
+												<label for="honeypot">Don't click this if you are human"</label>{{ form.honeypot }}
+								{% endif %}
+								{% endwith %}
+								</fieldset>
+				</form>
+
+{% endblock%}

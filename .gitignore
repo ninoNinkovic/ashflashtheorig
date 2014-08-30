@@ -1,0 +1,4 @@
+secrets.txt
+static/images
+static/fonts
+*.pyc
